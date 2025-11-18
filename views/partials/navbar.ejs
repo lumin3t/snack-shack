@@ -1,0 +1,17 @@
+<nav class="navbar">
+    <div class="logo">Snack Shack</div>
+    <div class="links">
+        <% if (currentUserId) { %>
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <!-- VULNERABILITY: IDOR links point to the current user's ID, but the ID can be changed manually -->
+            <a href="/account?id=<%= currentUserId %>">My Account</a>
+            <a href="/points?id=<%= currentUserId %>">My Points</a>
+            <a href="/feedback">Feedback</a>
+            <a href="/logout" class="logout-link">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } %>
+    </div>
+</nav>

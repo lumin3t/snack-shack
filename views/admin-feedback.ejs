@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs') %>
+<main class="content-card">
+    <h2>Admin Feedback Viewer</h2>
+    <p class="warning-message">**WARNING**: This page displays customer input without sanitization. (XSS Sink)</p>
+    
+    <div class="feedback-list">
+        <% if (feedback.length === 0) { %>
+            <p>No feedback submitted yet.</p>
+        <% } %>
+
+        <% feedback.forEach(item => { %>
+            <div class="feedback-item">
+                <p class="feedback-subject"><strong>Subject:</strong> <%= item.subject %></p>
+                <p class="feedback-meta">From User ID: <%= item.user_id %> on <%= new Date(item.created_at).toLocaleDateString() %></p>
+                
+                <div class="feedback-comment">
+                    <!-- VULNERABILITY: Stored XSS Sink: The `<% %>` syntax is used without the equals sign (`=`) and with the dash (`-`) which outputs unescaped HTML. This executes any scripts stored in the `comment` field. -->
+                    <p>Comment:</p>
+                    <div class="vulnerable-content">
+                        <%- item.comment %> 
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

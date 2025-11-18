@@ -1,0 +1,18 @@
+<%- include('partials/header.ejs') %>
+<main class="form-container">
+    <h2>Leave Feedback</h2>
+    <% if (message) { %>
+        <p class="success-message"><%= message %></p>
+    <% } %>
+    <!-- VULNERABILITY: Stored XSS Source. Input is not sanitized before being saved to the database. -->
+    <form method="POST" action="/feedback">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required class="input-field">
+        
+        <label for="comment">Comment (Vulnerable to XSS):</label>
+        <textarea id="comment" name="comment" rows="5" required class="textarea-field" placeholder="Try: <script>alert('XSS executed by Admin!')</script>"></textarea>
+        
+        <button type="submit" class="button primary-button">Submit Feedback</button>
+    </form>
+</main>
+<%- include('partials/footer.ejs') %>

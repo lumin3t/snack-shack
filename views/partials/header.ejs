@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Shack - Workshop Demo</title>
+    <!-- Base CSS for all themes -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    
+    <!-- VULNERABILITY: DOM-based XSS via Cookie (The theme value is unsafely rendered here) -->
+    <!-- The value of 'theme' (from cookie) is injected directly into the link path. -->
+    <link rel="stylesheet" href="/css/<%= theme %>.css">
+
+    <!-- Client-side script setup for DOM XSS demonstration -->
+    <script id="theme-cookie-injector">
+        // VULNERABILITY: This script demonstrates how a lack of server-side validation 
+        // combined with client-side DOM manipulation (even if just for theme setting) 
+        // can lead to DOM XSS. If 'theme' contained a payload like 'x' onerror='alert(1)', 
+        // the server would need to be the source of the unsafe rendering for true XSS.
+        // For this demo, the link tag injection is the primary vector.
+        console.log("Current theme value from cookie (unsanitized): <%= theme %>"); 
+    </script>
+</head>
+<body>
+    <%- include('navbar') %>

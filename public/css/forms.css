@@ -1,0 +1,42 @@
+/* public/css/forms.css - Common form styles for login, register, feedback */
+
+.form-container {
+    max-width: 400px;
+    margin: 80px auto;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-field, .textarea-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    transition: border-color 0.2s;
+}
+
+.input-field:focus, .textarea-field:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.form-container button {
+    margin-top: 10px;
+    padding: 12px;
+}
+
+.small-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}

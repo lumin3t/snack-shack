@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+<main class="content-card">
+    <!-- VULNERABILITY: IDOR Sink - Shows user based on URL parameter id=X -->
+    <h2>Account Details for **<%= targetUser.username %>**</h2>
+    <p class="user-id">User ID: <span><%= targetUser.id %></span> (Try changing the ID in the URL)</p>
+
+    <div class="user-info">
+        <p><strong>Email:</strong> <%= targetUser.email %></p>
+        <p><strong>Role:</strong> <%= targetUser.role %></p>
+        
+        <% if (isCurrentUser) { %>
+            <p class="highlight">This is your account.</p>
+        <% } else { %>
+            <p class="warning-message">This is NOT your account. Access is unauthorized.</p>
+        <% } %>
+
+        <div class="points-link">
+            <a href="/points?id=<%= targetUser.id %>" class="button">View Loyalty Points</a>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

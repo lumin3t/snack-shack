@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+<main class="content-card">
+    <h2>Welcome Back, <%= user.username %>!</h2>
+    <p class="highlight-message">This application is **intentionally vulnerable** for educational demonstration purposes.</p>
+
+    <div class="dashboard-section">
+        <h3>Your Current Status</h3>
+        <p>User ID: <strong><%= user.id %></strong></p>
+        <p>Role: <strong><%= user.role %></strong></p>
+        <p>Loyalty Points: <strong><%= user.points %></strong></p>
+    </div>
+
+    <div class="action-links">
+        <a href="/menu" class="button">View Snacks Menu</a>
+        <!-- IDOR Link -->
+        <a href="/account?id=<%= user.id %>" class="button">Manage Account (Vulnerable to IDOR)</a>
+        
+        <!-- Cookie Manipulation Link: Try changing the 'theme' cookie manually to 'dark' -->
+        <p class="small-text">You can change the theme using <a href="/set-theme?name=dark">this link</a> or by directly editing the 'theme' cookie in your browser.</p>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,12 @@
+Snack Shack robots.txt
+
+This file directs search engine crawlers.
+
+User-agent: *
+Disallow: /admin/
+Allow: /menu/
+
+Did you know some menus are only for premium members?
+
+Disallow: /secret-menu
+Allow: /secret-menu/premium=true

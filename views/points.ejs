@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs') %>
+<main class="content-card">
+    <!-- VULNERABILITY: IDOR Sink - Shows user's points based on URL parameter id=X -->
+    <h2>Loyalty Points for **<%= targetUser.username %>**</h2>
+    <p class="user-id">User ID: <span><%= targetUser.id %></span> (Try changing the ID in the URL)</p>
+
+    <div class="points-display">
+        <h3>Total Points:</h3>
+        <span class="points-count"><%= targetUser.points %></span>
+    </div>
+
+    <div class="loyalty-status">
+        <% if (isLoyalUser) { %>
+            <p class="highlight"><%= loyaltyMessage %></p>
+            <p>You can find the Secret Menu path in `robots.txt`.</p>
+        <% } else { %>
+            <p><%= loyaltyMessage %></p>
+        <% } %>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,17 @@
+<%- include('partials/header.ejs') %>
+<main class="content-card">
+    <h2>Snack Menu</h2>
+    <p>All your favorite crispy, salty, and sweet treats!</p>
+
+    <div class="snack-list">
+        <% snacks.forEach(snack => { %>
+            <div class="snack-item">
+                <h3><%= snack.name %></h3>
+                <p><%= snack.description %></p>
+                <p class="price-value">$<%= snack.price.toFixed(2) %></p>
+                <a href="/menu/<%= snack.id %>" class="button">Select & Buy</a>
+            </div>
+        <% }); %>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

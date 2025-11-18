@@ -1,0 +1,107 @@
+/* public/css/main.css - Base (Light) Theme and Common Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --color-primary: #6200EE;
+    --color-background-light: #f4f4f4;
+    --color-background-dark: #1f1f1f;
+    --color-text-dark: #333;
+    --color-text-light: #e0e0e0;
+    --color-card-light: #ffffff;
+    --color-card-dark: #2c2c2c;
+    --color-warning: #cf6679;
+    --color-success: #03dac6;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--color-background-light); /* Default light */
+    color: var(--color-text-dark); /* Default dark text */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #3700b3;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 80px auto 50px auto;
+}
+
+.navbar {
+    background-color: var(--color-card-light);
+    color: var(--color-text-dark);
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.navbar .links a {
+    margin-left: 20px;
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+.content-card, .form-container {
+    background-color: var(--color-card-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-message {
+    color: var(--color-success);
+    font-weight: 600;
+    padding: 10px;
+    border: 1px solid var(--color-success);
+    border-radius: 6px;
+}
+
+.warning-message, .error-message {
+    color: var(--color-warning);
+    font-weight: 600;
+    padding: 10px;
+    border: 1px solid var(--color-warning);
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.button, .primary-button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    text-align: center;
+    display: inline-block;
+}
+
+.button:hover, .primary-button:hover {
+    background-color: #3700b3;
+}

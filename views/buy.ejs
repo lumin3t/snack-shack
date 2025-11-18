@@ -1,0 +1,19 @@
+<%- include('partials/header.ejs') %>
+<main class="content-card">
+    <h2>Purchase Complete</h2>
+    
+    <p class="highlight-message"><%= message %></p>
+
+    <div class="order-summary">
+        <p>Snack ID: <strong><%= snackId %></strong></p>
+        <p>Quantity: <strong><%= quantity %></strong></p>
+        <!-- The final total reflects the price submitted by the client -->
+        <p>Submitted Unit Price: <strong>$<%= price %></strong></p>
+        <h3>Final Total Charged: <span class="total-value">$<%= finalTotal %></span></h3>
+    </div>
+
+    <div class="loyalty-info">
+        <p class="small-text">Thank you for your business. Your order was logged with the total price you specified.</p>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>
